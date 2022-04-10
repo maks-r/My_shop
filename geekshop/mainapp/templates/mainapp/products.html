@@ -1,7 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 
-
 {% block header %}
 <div class="hero-white">
 	<div class="header clearfix">
@@ -10,15 +9,15 @@
 </div>
 {% endblock %}
 
-{% block content%}
+
+{% block content %}
 <div class="details">
 	<div class="links clearfix">
 		<ul class="links-menu">
-			<li><a href="#" class="active">все</a></li>
-			<li><a href="#">дом</a></li>
-			<li><a href="#">офис</a></li>
-			<li><a href="#">модерн</a></li>
-			<li><a href="#">классика</a></li>
+			<li><a href='#' class='active'>Все</a></li>
+			{% for category in categories %}
+			<li><a href="#">{{ category.name }}</a></li>
+			{% endfor %}
 		</ul>
 	</div>
 
@@ -81,6 +80,7 @@
 				</a>
 			</div>
 			{% endfor %}
+
 		</div>
 	</div>
 </div>
