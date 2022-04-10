@@ -5,7 +5,8 @@
         <a href="{% url link.url %}" 
         {% if request.resolver_match.url_name == link.url %}
             class="active"
-        {% endif %}>
+        {% endif %}
+        >
         {{ link.name }}
         <a/>
     </li>
