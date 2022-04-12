@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Стул",
+        "category": "Стулья",
+        "description": "Отличный стул"
+    },
+    {
+        "name": "Стул_2",
+        "category": "Стулья",
+        "description": "Хороший стул"
+    },
+    {
+        "name": "Стол",
+        "category": "Столы",
+        "description": "Отличный стол"
+    },
+    {
+        "name": "Стол_2",
+        "category": "Столы",
+        "description": "Хороший стол"
+    },
+    {
+        "name": "Лампа",
+        "category": "Лампы",
+        "description": "Отличная лампа"
+    },
+    {
+        "name": "Лампа_2",
+        "category": "Лампы",
+        "description": "Хорошая лампа"
+    }
+]

@@ -14,11 +14,7 @@ def index(request):
     return render(
         request,
         "mainapp/index.html",
-        context={
-            "title": "Главная",
-            "menu_links": MENU_LINKS,
-            "products": products
-        },
+        context={"title": "Главная", "menu_links": MENU_LINKS, "products": products},
     )
 
 
@@ -28,15 +24,15 @@ def products(request):
         request,
         "mainapp/products.html",
         context={
-            "title": "Продукты", 
-            "products": [], 
+            "title": "Продукты",
+            "products": [],
             "menu_links": MENU_LINKS,
-            "categories": categories 
-            },
+            "categories": categories,
+        },
     )
 
 
-def  category(request, pk):
+def category(request, pk):
     return products(request)
 
 
