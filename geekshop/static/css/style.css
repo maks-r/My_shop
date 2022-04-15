@@ -1031,24 +1031,33 @@ td:first-child {
 .related-products {
 	margin-bottom: 120px;
 }
-.related-products .block a img {
+
+.related-products.block a img {
 	float: left;
 }
+
 .related-products .block {
 	float: left;
 	margin-right: 30px;
 	display: block;
-	height: 370px;
-	width: 370px;
+	height: 270px;
+	width: 270px;
 	position: relative;
 }
+
+.related-products img.product-image {
+	height: 270px;
+	width: 270px;
+}
+
 .related-products .block:nth-child(3n) {
 	margin-right: 0px;
 }
+
 .related-products a .text {
 	display: none;
-	height: 368px;
-	width: 368px;
+	height: 270px;
+	width: 270px;
 	background-color: #ffffff;
     opacity: 0.9;
     position: absolute;
