@@ -2,8 +2,9 @@ from django.conf import settings
 from django.db import models
 from mainapp.models import Product
 
+
 class BasketManager(models.Manager):
-    def count(self):
+    def total_quantity(self):
         basket_items = self.all()
         return sum(item.quantity for item in basket_items)
 
@@ -23,6 +24,11 @@ class Basket(models.Model):
 
     objects = BasketManager()
 
+    @property
+    def cost(self):
+        return self.product.price * self.quantity
+
+    @property
     def __str__(self):
         return f'{self.product.name} - {self.quantity} шт.'
 

@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import get_object_or_404, render
 from .models import Product, ProductCategory
 
@@ -21,37 +22,58 @@ def index(request):
         },
     )
 
+def get_hot_product(queryset):
+    return random.choice(queryset)
+
 
 def products(request):
     categories = ProductCategory.objects.all()
-    products = Product.objects.all()[:4]
+    products = Product.objects.all()
+    hot_product = get_hot_product(products)
     return render(
         request,
         "mainapp/products.html",
         context={
             "title": "Продукты",
-            "products": products,
+            "hot_product": hot_product,
+            "products": products.exclude(pk=hot_product.pk)[:4],
             "menu_links": MENU_LINKS,
             "categories": categories,
         },
     )
 
 
-def category(request, pk):
+def category(request, category_id):
     categories = ProductCategory.objects.all()
-    category = get_object_or_404(ProductCategory, id=pk)
+    category = get_object_or_404(ProductCategory, id=category_id)
     products = Product.objects.filter(category=category)
+    hot_product = get_hot_product(products)
     return render(
         request,
         "mainapp/products.html",
         context={
             "title": "Продукты",
-            "products": products,
+            "hot_product": get_hot_product(products),
+            "products": products.exclude(pk=hot_product.pk)[:4],
             "menu_links": MENU_LINKS,
             "categories": categories,
         },
     )
 
+
+def product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    categories = ProductCategory.objects.all()
+    return render(
+        request,
+        "mainapp/product.html",
+        context={
+            "title": "Продукты",
+            "product": product,
+            "menu_links": MENU_LINKS,
+            "categories": categories,
+        },
+    )
 
 def contact(request):
     return render(
