@@ -19,6 +19,11 @@
             {{ user.first_name|default:'Пользователь' }}          
         </a>
     </li>
+    {% if user.is_superuser %}
+        <a href="{% url 'admin:users' %}">
+            <i class="fa fa-microchip"></i>Админка          
+        </a>
+    {% endif %}  
     <li>
         <a href="{% url 'basket:view' %}"> 
             <i class="fa fa-shopping-basket"></i>Корзина
