@@ -1040,14 +1040,14 @@ td:first-child {
 	float: left;
 	margin-right: 30px;
 	display: block;
-	height: 270px;
-	width: 270px;
+	height: 370px;
+	width: 370px;
 	position: relative;
 }
 
 .related-products img.product-image {
-	height: 270px;
-	width: 270px;
+	height: 370px;
+	width: 370px;
 }
 
 .related-products .block:nth-child(3n) {
@@ -1056,8 +1056,8 @@ td:first-child {
 
 .related-products a .text {
 	display: none;
-	height: 270px;
-	width: 270px;
+	height: 370px;
+	width: 370px;
 	background-color: #ffffff;
     opacity: 0.9;
     position: absolute;
