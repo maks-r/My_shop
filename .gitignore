@@ -130,5 +130,6 @@ dmypy.json
 
 .vscode
 media
-data.json
+geekshop/data.json
 geekshop/tmp/emails
+geekshop/credentials.json
