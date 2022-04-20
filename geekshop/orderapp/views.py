@@ -40,8 +40,16 @@ class OrderEditMixin:
                     for num, form in enumerate(formset.forms):
                         form.initial['product'] = basket_items[num].product
                         form.initial['quantity'] = basket_items[num].quantity
+                        # form.initial['price'] = basket_items[num].price
                     basket_items.delete()
-            
+
+        self.add_price_field_to_formset_forms(formset)
+        return formset
+    
+    def add_price_field_to_formset_forms(self, formset):
+        for form in formset.forms:
+            if form.instance.pk:
+                form.initial['price'] = form.instance.product.price
         return formset
     
     def save_formset(self, form, formset):
@@ -75,7 +83,6 @@ class OrderCreate(OrderEditMixin, CreateView):
         return super(OrderCreate, self).form_valid(form)
 
 
-
 class OrderUpdate(OrderEditMixin, UpdateView):
     model = Order
     form_class = OrderForm
@@ -89,7 +96,9 @@ class OrderUpdate(OrderEditMixin, UpdateView):
     def form_valid(self, form):
         context = self.get_context_data()
         orderitems = context['orderitems']
-        self.save_formset(form, orderitems, instance=self.object)
+
+        self.save_formset(form, orderitems)
+
         return super(OrderUpdate, self).form_valid(form)
 
 
