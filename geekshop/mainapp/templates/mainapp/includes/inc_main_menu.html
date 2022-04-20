@@ -20,9 +20,11 @@
         </a>
     </li>
     {% if user.is_superuser %}
+    <li>
         <a href="{% url 'admin:users' %}">
             <i class="fa fa-microchip"></i>Админка          
         </a>
+    </li>
     {% endif %}  
     <li>
         <a href="{% url 'basket:view' %}"> 

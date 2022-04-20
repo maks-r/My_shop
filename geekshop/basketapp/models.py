@@ -31,4 +31,3 @@ class Basket(models.Model):
     @property
     def __str__(self):
         return f'{self.product.name} - {self.quantity} шт.'
-
