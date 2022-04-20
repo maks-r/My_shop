@@ -40,35 +40,42 @@ html, body {
 
 .menu {
 	list-style-type: none;
-	margin-top: 67px;
+	margin-top: 40px;
 	float: right;
 }
 .menu li {
 	float: left;
 }
-.menu a {
+.menu li a {
 	color: #8c8c8c;
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 900;
 	text-align: right;
 	text-transform: uppercase;
 	text-decoration: none;
-	padding: 10px 13px;
+	padding: 10px 10px;
 }
-.menu .active {
+.menu li .active {
 	color: #212121;
-	font-weight: 700;
+	font-weight: 900;
 	border-bottom: 3px solid #212121;
 }
-.menu a:hover {
+.menu li a:hover {
 	color: #212121;
-	font-weight: 700;
+	font-weight: 900;
 	border-bottom: 3px solid #212121;
 }
-.menu a:active {
+.menu li a:active {
 	color: #8c8c8c;
-	font-weight: 700;
+	font-weight: 900;
 	border-bottom: 3px solid #212121;
+}
+
+.menu li.dropdown-item a:hover {
+	border-bottom: none;
+}
+.menu li.dropdown-item a:active {
+	border-bottom: none;
 }
 
 .search {
