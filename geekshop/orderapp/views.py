@@ -1,5 +1,5 @@
 from django.forms import inlineformset_factory
-from django.http.response import HttpResponseBadRequest, HttpResponseRedirect
+from django.http.response import HttpResponseBadRequest, HttpResponseRedirect, JsonResponse
 from django.views.generic import (
     CreateView, 
     UpdateView, 
@@ -10,13 +10,13 @@ from django.views.generic import (
 from django.shortcuts import get_object_or_404
 from django.db import transaction
 from .forms import OrderForm, OrderItemForm
+from mainapp.models import Product
 from .models import Order, OrderItem
 from django.urls import reverse, reverse_lazy
 
 
 class OrderList(ListView):
     model = Order
-
     def get_queryset(self):
        return Order.objects.filter(user=self.request.user)
 
@@ -40,7 +40,7 @@ class OrderEditMixin:
                     for num, form in enumerate(formset.forms):
                         form.initial['product'] = basket_items[num].product
                         form.initial['quantity'] = basket_items[num].quantity
-                        # form.initial['price'] = basket_items[num].price
+                        form.initial['price'] = basket_items[num].price
                     basket_items.delete()
 
         self.add_price_field_to_formset_forms(formset)
@@ -80,7 +80,7 @@ class OrderCreate(OrderEditMixin, CreateView):
 
         self.save_formset(form, orderitems)
 
-        return super(OrderCreate, self).form_valid(form)
+        return super().form_valid(form)
 
 
 class OrderUpdate(OrderEditMixin, UpdateView):
@@ -116,3 +116,10 @@ def order_forming_complete(request, pk):
     order.status = Order.IN_PROCESSING
     order.save()
     return HttpResponseRedirect(reverse('orderapp:orders_list'))
+
+
+def product_price(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return JsonResponse({
+        'price': product.price
+    })
