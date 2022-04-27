@@ -16,10 +16,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-
 from mainapp import views as mainapp
 
+
 urlpatterns = [
+    path('__debug__/', include('debug_toolbar.urls')),
     path("", include("social_django.urls", namespace="social")),
     path("admin/", include("adminapp.urls", namespace="admin")),
     path("", mainapp.index, name="main"),
