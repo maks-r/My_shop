@@ -25,6 +25,8 @@ class Product(models.Model):
     image = models.ImageField(verbose_name="картинка", blank=True, upload_to="products")
     quantity = models.PositiveBigIntegerField(verbose_name="количество", default=0)
     is_active = models.BigIntegerField(verbose_name="активный", default=True)
+
+    objects = ProductManager()
     
     def __str__(self):
         return self.name

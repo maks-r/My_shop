@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     
     "debug_toolbar",
     "template_profiler_panel",
+    "django_extensions",
     "social_django",
     
     "mainapp",
@@ -220,3 +221,10 @@ DEBUG_TOOLBAR_PANELS = [
 'debug_toolbar.panels.profiling.ProfilingPanel',
 'template_profiler_panel.panels.template.TemplateProfilerPanel',
 ]
+
+def show_toolbar (request):
+    return bool(request.GET.get('debug'))
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': show_toolbar
+}
